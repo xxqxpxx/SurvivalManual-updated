@@ -1,6 +1,7 @@
 package org.ligi.survivalmanual.refactor.presentation.ui.main_screen
 
 import androidx.compose.foundation.layout.Box
+import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -83,8 +84,8 @@ fun MainScreen(
                 )
                 state.searchResults != null -> {
                     val results = state.searchResults
-                    LazyColumn(modifier = Modifier.fillMaxSize()) {
-                        items(results) { result ->
+                    LazyColumn(modifier = Modifier.fillMaxSize()) { // Use results.orEmpty() to handle nullable list
+                        items(results.orEmpty()) { result ->
                             Text(text = result.title, modifier = Modifier.padding(8.dp))
                             Text(
                                 text = highlightTextAsAnnotatedString(
@@ -92,7 +93,7 @@ fun MainScreen(
                                     query = searchQuery
                                 ),
                                 modifier = Modifier.padding(horizontal = 8.dp, bottom = 8.dp)
-                            )
+                            ) // Access properties using it.title and it.snippet
                             // No need for the second Text displaying result.title here
                         }
                     }
@@ -101,7 +102,7 @@ fun MainScreen(
                     val content = state.survivalContent
                     Text(
                         text = "Survival Guide Loaded: ${content.title}",
-                        modifier = Modifier.padding(8.dp)
+                        modifier = Modifier.padding(8.dp) // Safely access content.title
                     )
                 }
                 // You might not need an "Initial" state check if isLoading is false and other properties are null

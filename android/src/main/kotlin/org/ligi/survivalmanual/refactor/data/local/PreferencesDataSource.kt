@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
+import kotlinx.coroutines.flow.first
 import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import org.ligi.survivalmanual.refactor.domain.UserPreferences
 
@@ -19,13 +20,10 @@ class PreferencesDataSource(private val context: Context) {
 
     suspend fun getUserPreferences(): UserPreferences {
         return try {
-            context.dataStore.data.collect { preferences ->
-                UserPreferences(
-                    isNightModeEnabled = preferences[PreferencesKeys.NIGHT_MODE] ?: false
-                )
-            }
-            // This part won't be reached as collect is a suspending function that doesn't return
-            // You might need a different pattern if you just want the current value, e.g., first()
+            val preferences = context.dataStore.data.first()
+            UserPreferences(
+                isNightModeEnabled = preferences[PreferencesKeys.NIGHT_MODE] ?: false
+            )
         } catch (e: Exception) {
             throw DomainException.UnknownErrorException("Failed to get user preferences: ${e.message}")
         }

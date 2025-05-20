@@ -38,7 +38,7 @@ object AppModule {
     @Singleton
     fun provideImageDataSource(@ApplicationContext context: Context): ImageDataSource {
         // TODO: Replace with your actual ImageDataSource implementation
-        return ImageDataSource()
+ return ImageDataSource(context)
     }
 
     @Provides

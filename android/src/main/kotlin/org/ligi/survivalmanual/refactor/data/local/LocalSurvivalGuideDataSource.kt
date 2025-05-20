@@ -16,6 +16,45 @@ fun linkImagesInMarkDown(markdown: String): String {
 class LocalSurvivalGuideDataSource {
 
     fun getSurvivalContent(): SurvivalContent {
+        val dummyArticle1 = Article(
+            id = "article1",
+            title = "Finding Water",
+            content = listOf(
+                ArticleContent.Text(linkImagesInMarkDown("Look for dew on grass in the morning...")),
+                ArticleContent.Image("water_source.jpg", "A clear stream")
+            )
+        )
+
+        val dummyArticle2 = Article(
+            id = "article2",
+            title = "Building Shelter",
+            content = listOf(
+                ArticleContent.Text(linkImagesInMarkDown("Find a natural windbreak...")),
+                ArticleContent.Image(
+                    "shelter_construction.png",
+                    "Building a lean-to"
+                )
+            )
+        )
+
+        val dummySection1 = Section(
+            id = "section1",
+            title = "Basic Needs",
+            articles = listOf(dummyArticle1, dummyArticle2)
+        )
+
+        val dummyArticle3 = Article(
+            id = "article3",
+            title = "Navigating with Stars",
+            content = listOf(ArticleContent.Text(linkImagesInMarkDown("Use the North Star to find direction..."))),
+        )
+
+        val dummySection2 = Section(
+            id = "section2",
+            title = "Navigation",
+            articles = listOf(dummyArticle3)
+        )
+
         try {
             // Return dummy or hardcoded data for now
             val dummyArticle1 = Article(
@@ -27,43 +66,6 @@ class LocalSurvivalGuideDataSource {
  )
             )
 
-            val dummyArticle2 = Article(
-                id = "article2",
-                title = "Building Shelter",
-                content = linkImagesInMarkDown("Find a natural windbreak..."),
-                images = listOf(
-                    ArticleContent.Image(
-                        "shelter_construction.png",
-                        "Building a lean-to"
-                    )
- )
- content = listOf(
- ArticleContent.Text(linkImagesInMarkDown("Find a natural windbreak...")),
- ) + images // Combine text content with images
-            )
-
-            val dummySection1 = Section(
-                id = "section1",
-                title = "Basic Needs",
-                articles = listOf(dummyArticle1, dummyArticle2)
-            )
-
-            val dummyArticle3 = Article(
-                id = "article3",
-                title = "Navigating with Stars",
- content = listOf(ArticleContent.Text(linkImagesInMarkDown("Use the North Star to find direction..."))),
-                images = emptyList()
-            )
-
-            val dummySection2 = Section(
-                id = "section2",
-                title = "Navigation",
-                articles = listOf(dummyArticle3)
-            )
-
-            return SurvivalContent(
-                sections = listOf(dummySection1, dummySection2)
-            )
         } catch (e: Exception) {
             throw DomainException.UnknownErrorException("Error loading survival content: ${e.message}")
         }
