@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
+apply plugin: 'com.google.dagger.hilt.android'
+
 repositories {
     mavenCentral()
     maven { url "https://jitpack.io" }
@@ -41,7 +43,9 @@ android {
     }
 
     sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += 'src/main/kotlin' // Keep existing
+        main.java.srcDirs += 'src/main/kotlin/data' // Add data source set
+        main.java.srcDirs += 'src/main/kotlin/domain' // Add domain source set
     }
 
     compileOptions {
@@ -69,6 +73,10 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:$nav_version")
     // Coil
     implementation("io.coil-kt:coil-compose:2.6.0") // Use a recent stable version
+
+    // Dagger Hilt
+    implementation("com.google.dagger:hilt-android:2.51.1") // Use a recent stable version
+    annotationProcessor("com.google.dagger:hilt-compiler:2.51.1") // Use the same version
 
 // Third party
     implementation "com.chibatching.kotpref:kotpref:$kotpref_version"
