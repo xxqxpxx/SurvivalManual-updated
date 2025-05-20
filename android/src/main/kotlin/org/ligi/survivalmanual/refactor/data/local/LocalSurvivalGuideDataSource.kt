@@ -21,7 +21,6 @@ class LocalSurvivalGuideDataSource {
             val dummyArticle1 = Article(
                 id = "article1",
                 title = "Finding Water",
-                content = linkImagesInMarkDown("Look for dew on grass in the morning..."),
  content = listOf(
  ArticleContent.Text(linkImagesInMarkDown("Look for dew on grass in the morning...")),
  ArticleContent.Image("water_source.jpg", "A clear stream")

@@ -64,10 +64,9 @@ fun ImageScreen(
  AsyncImage(
  model = state.imageData, // Assuming Coil can handle ByteArray
  contentDescription = "Survival Guide Image", // Add a meaningful content description
-                        modifier = Modifier.fillMaxSize()
-                }
-                        // Example placeholders for zoom/pan modifiers:
-                        // .graphicsLayer {
+            modifier = Modifier.fillMaxSize()
+            // Example placeholders for zoom/pan modifiers:
+            // .graphicsLayer {
                         //     scaleX = scale
                         //     scaleY = scale
                         //     translationX = offsetX
