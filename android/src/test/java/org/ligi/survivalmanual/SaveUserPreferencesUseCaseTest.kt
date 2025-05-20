@@ -1,7 +1,7 @@
-package domain.test
+package org.ligi.survivalmanual
 
 import domain.model.UserPreferences
-import domain.use_case.SaveUserPreferencesUseCase
+import org.ligi.survivalmanual.refactor.domain.use_case.SaveUserPreferencesUseCase
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test

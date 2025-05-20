@@ -7,11 +7,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import org.ligi.survivalmanual.presentation.ui.main_screen.MainScreen
+import org.ligi.survivalmanual.refactor.presentation.ui.main_screen.MainScreen
 import org.ligi.survivalmanual.refactor.presentation.ui.main_screen.MainScreenViewModel
 import org.ligi.survivalmanual.refactor.presentation.ui.preferences_screen.PreferencesScreen
 import org.ligi.survivalmanual.refactor.presentation.ui.preferences_screen.PreferencesViewModel
-import presentation.ui.image_screen.ImageScreen
+import org.ligi.survivalmanual.refactor.presentation.ui.image_screen.ImageScreen
 
 sealed class Screen(val route: String) {
     object MainScreen : Screen("main_screen")

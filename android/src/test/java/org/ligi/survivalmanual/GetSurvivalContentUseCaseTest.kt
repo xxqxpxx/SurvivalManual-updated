@@ -1,4 +1,4 @@
-package domain.test
+package org.ligi.survivalmanual
 
 import domain.model.SurvivalContent
 import kotlinx.coroutines.runBlocking

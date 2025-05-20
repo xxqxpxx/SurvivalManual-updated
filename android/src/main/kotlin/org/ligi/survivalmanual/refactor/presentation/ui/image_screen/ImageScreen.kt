@@ -1,4 +1,4 @@
-package presentation.ui.image_screen
+package org.ligi.survivalmanual.refactor.presentation.ui.image_screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -10,6 +10,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment

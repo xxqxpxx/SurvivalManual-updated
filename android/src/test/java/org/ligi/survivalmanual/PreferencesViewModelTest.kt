@@ -1,14 +1,11 @@
-package presentation.ui.preferences_screen.test
+package org.ligi.survivalmanual
 
-import domain.error.DomainException
-import domain.use_case.GetUserPreferencesUseCase
-import domain.use_case.SaveUserPreferencesUseCase
-import io.mockk.coEvery
-import io.mockk.mockk
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
+import org.ligi.survivalmanual.refactor.domain.use_case.GetUserPreferencesUseCase
+import org.ligi.survivalmanual.refactor.domain.use_case.SaveUserPreferencesUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.ligi.survivalmanual.refactor.presentation.ui.preferences_screen.PreferencesViewModel

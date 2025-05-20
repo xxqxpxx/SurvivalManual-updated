@@ -1,6 +1,8 @@
 [versions]
 agp = "8.6.0"
-hiltAndroid = "2.56.2"
+core = "1.6.1"
+espressoContrib = "3.6.1"
+hiltAndroid = "2.50"
 hiltAndroidGradlePlugin = "2.50"
 kotlin = "1.9.0"
 coreKtx = "1.16.0"
@@ -11,6 +13,7 @@ lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.10.1"
 composeBom = "2024.04.01"
 materialZ = "1.7.8"
+mockkAndroid = "1.14.2"
 robolectricVersion = "4.14"
 roomVersion = "2.6.1"
 navigationCompose = "2.7.6"
@@ -22,18 +25,25 @@ ksp = "1.9.0-1.0.13"
 # Add to [versions] section
 mockkVersion = "1.13.9"
 coroutinesTest = "1.7.3"
+testButlerApp = "2.2.1"
+testButlerLibrary = "2.2.1"
 vectordrawable = "1.2.0"
 
 
 [libraries]
+androidx-core = { module = "androidx.test:core", version.ref = "core" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espressoContrib" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-rules = { module = "androidx.test:rules", version.ref = "core" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hiltAndroidGradlePlugin" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
 mockk = { group = "io.mockk", name = "mockk", version.ref = "mockkVersion" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTest" }
+mockk-agent = { module = "io.mockk:mockk-agent", version.ref = "mockkAndroid" }
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockkAndroid" }
 robolectric-junit = { group = "org.robolectric", name = "junit", version.ref = "robolectricVersion" }
 
 # Compose
@@ -67,6 +77,8 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
 androidx-vectordrawable = { group = "androidx.vectordrawable", name = "vectordrawable", version.ref = "vectordrawable" }
+test-butler-app = { module = "com.linkedin.testbutler:test-butler-app", version.ref = "testButlerApp" }
+test-butler-library = { module = "com.linkedin.testbutler:test-butler-library", version.ref = "testButlerLibrary" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

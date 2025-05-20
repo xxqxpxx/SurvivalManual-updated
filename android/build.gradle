@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
+    id 'com.google.dagger.hilt.android'
+
 }
 
 android {
@@ -98,8 +100,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.androidx.ui.tooling)
+    testImplementation(libs.androidx.ui.test.manifest)
 
     // Core Android dependencies
     implementation(libs.androidx.core.ktx)
@@ -138,8 +140,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
 
     // Debug implementations
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.androidx.ui.tooling)
+    testImplementation(libs.androidx.ui.test.manifest)
 
     // Robolectric for screenshot testing
     testImplementation(libs.robolectric)
@@ -157,5 +159,32 @@ dependencies {
     implementation(libs.hilt.android.gradle.plugin) // Use a recent stable version
 
     ksp(libs.hilt.compiler) // Use the same version
+
+
+    implementation 'com.google.dagger:hilt-android:2.50'
+
+    // For instrumentation tests
+    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.50'
+
+    // For local unit tests
+    testImplementation 'com.google.dagger:hilt-android-testing:2.50'
+
+
+
+// Testing
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.contrib
+    androidTestImplementation libs.androidx.core
+    androidTestImplementation libs.androidx.rules
+    androidTestImplementation libs.test.butler.library
+    androidTestUtil libs.test.butler.app
+
+    implementation(libs.androidx.ui.test.junit4 )
+
+    implementation(libs.robolectric.junit)
+
+
+    testImplementation libs.mockk.android
+    testImplementation libs.mockk.agent
 
 }

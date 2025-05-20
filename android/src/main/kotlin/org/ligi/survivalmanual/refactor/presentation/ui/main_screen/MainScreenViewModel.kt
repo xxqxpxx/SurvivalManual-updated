@@ -3,7 +3,7 @@ package org.ligi.survivalmanual.refactor.presentation.ui.main_screen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import domain.error.DomainException
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

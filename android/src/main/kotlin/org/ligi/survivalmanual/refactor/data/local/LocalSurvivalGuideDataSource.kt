@@ -1,6 +1,6 @@
 package org.ligi.survivalmanual.refactor.data.local
 
-import domain.error.DomainException
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import org.ligi.survivalmanual.refactor.domain.Article
 import org.ligi.survivalmanual.refactor.domain.ArticleContent
 import org.ligi.survivalmanual.refactor.domain.SearchResult

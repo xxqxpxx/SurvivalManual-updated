@@ -1,6 +1,6 @@
 package org.ligi.survivalmanual.refactor.data.repository
 
-import domain.error.DomainException
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.ligi.survivalmanual.refactor.data.local.ImageDataSource

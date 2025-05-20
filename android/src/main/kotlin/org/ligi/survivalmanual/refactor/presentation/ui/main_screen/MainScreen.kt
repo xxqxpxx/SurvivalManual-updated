@@ -1,4 +1,4 @@
-package org.ligi.survivalmanual.presentation.ui.main_screen
+package org.ligi.survivalmanual.refactor.presentation.ui.main_screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column

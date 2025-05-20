@@ -2,7 +2,7 @@ package data.local.test
 
 import android.content.Context
 import android.content.res.AssetManager
-import domain.error.DomainException
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull

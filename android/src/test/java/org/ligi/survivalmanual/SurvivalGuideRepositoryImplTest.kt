@@ -1,24 +1,16 @@
-package data.repository.test
+package org.ligi.survivalmanual
 
-import com.example.mylibrary.data.local.ImageDataSource // Replace with your actual import
-import com.example.mylibrary.data.local.LocalSurvivalGuideDataSource // Replace with your actual import
-import com.example.mylibrary.data.local.PreferencesDataSource // Replace with your actual import
-import com.example.mylibrary.data.repository.SurvivalGuideRepositoryImpl // Replace with your actual import
-import com.example.mylibrary.domain.error.ContentNotFoundException // Replace with your actual import
-import com.example.mylibrary.domain.error.NetworkException // Replace with your actual import
-import com.example.mylibrary.domain.error.PreferencesSaveException // Replace with your actual import
-import com.example.mylibrary.domain.error.UnknownErrorException // Replace with your actual import
-import com.example.mylibrary.domain.model.SearchResult // Replace with your actual import
-import com.example.mylibrary.domain.model.SurvivalContent // Replace with your actual import
-import com.example.mylibrary.domain.model.UserPreferences // Replace with your actual import
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.whenever
+import org.ligi.survivalmanual.refactor.data.local.ImageDataSource
+import org.ligi.survivalmanual.refactor.data.local.LocalSurvivalGuideDataSource
+import org.ligi.survivalmanual.refactor.data.local.PreferencesDataSource
+import org.ligi.survivalmanual.refactor.data.repository.SurvivalGuideRepositoryImpl
+import org.ligi.survivalmanual.refactor.domain.SurvivalContent
+import org.ligi.survivalmanual.refactor.domain.UserPreferences
 
 class SurvivalGuideRepositoryImplTest {
 

@@ -1,15 +1,9 @@
-package domain.test
+package org.ligi.survivalmanual
 
-import domain.error.DomainException
-import domain.use_case.GetImageUseCase
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
+import org.ligi.survivalmanual.refactor.domain.use_case.GetImageUseCase
 import kotlinx.coroutines.runBlocking
-import org.junit.Before
-import org.junit.Test
-import org.junit.jupiter.api.assertThrows
 import org.ligi.survivalmanual.refactor.domain.repository.SurvivalGuideRepository
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.whenever
-import kotlin.test.assertEquals
 
 class GetImageUseCaseTest {
 

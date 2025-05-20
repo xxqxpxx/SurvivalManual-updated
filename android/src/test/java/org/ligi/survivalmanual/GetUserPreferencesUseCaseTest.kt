@@ -1,8 +1,8 @@
-package domain.test
+package org.ligi.survivalmanual
 
-import domain.error.DomainException
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import domain.model.UserPreferences
-import domain.use_case.GetUserPreferencesUseCase
+import org.ligi.survivalmanual.refactor.domain.use_case.GetUserPreferencesUseCase
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.Before

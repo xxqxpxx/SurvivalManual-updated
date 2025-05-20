@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable
 import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
-import domain.error.DomainException
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import org.ligi.survivalmanual.R
 import java.io.FileNotFoundException
 

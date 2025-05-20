@@ -1,6 +1,6 @@
 package org.ligi.survivalmanual.refactor.domain.use_case
 
-import domain.error.DomainException
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import org.ligi.survivalmanual.refactor.domain.SurvivalContent
 import org.ligi.survivalmanual.refactor.domain.repository.SurvivalGuideRepository
 import java.io.IOException

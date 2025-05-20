@@ -1,10 +1,10 @@
 package presentation.ui.main_screen.test
 
 import com.google.common.truth.Truth.assertThat
-import domain.error.DomainException
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import domain.model.SearchResult
 import domain.model.SurvivalContent
-import domain.use_case.GetImageUseCase
+import org.ligi.survivalmanual.refactor.domain.use_case.GetImageUseCase
 import domain.use_case.GetSurvivalContentUseCase
 import domain.use_case.SearchSurvivalContentUseCase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
