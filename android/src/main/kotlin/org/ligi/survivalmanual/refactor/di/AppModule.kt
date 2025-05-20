@@ -1,5 +1,6 @@
 package org.ligi.survivalmanual.refactor.di
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,6 +13,7 @@ import org.ligi.survivalmanual.refactor.domain.repository.SurvivalGuideRepositor
 import org.ligi.survivalmanual.refactor.domain.use_case.GetUserPreferencesUseCase
 import org.ligi.survivalmanual.refactor.domain.use_case.SaveUserPreferencesUseCase
 import org.ligi.survivalmanual.refactor.domain.use_case.SearchSurvivalContentUseCase
+import dagger.hilt.android.qualifiers.ApplicationContext
 import org.ligi.survivalmanual.refactor.domain.use_case.GetSurvivalContentUseCase
 import javax.inject.Singleton
 
@@ -27,14 +29,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providePreferencesDataSource(): PreferencesDataSource {
+    fun providePreferencesDataSource(@ApplicationContext context: Context): PreferencesDataSource {
         // TODO: Replace with your actual PreferencesDataSource implementation
-        return PreferencesDataSource()
+        return PreferencesDataSource(context)
     }
 
     @Provides
     @Singleton
-    fun provideImageDataSource(): ImageDataSource {
+    fun provideImageDataSource(@ApplicationContext context: Context): ImageDataSource {
         // TODO: Replace with your actual ImageDataSource implementation
         return ImageDataSource()
     }
