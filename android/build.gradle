@@ -76,8 +76,8 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.6.0") // Use a recent stable version
 
     // Dagger Hilt
-    implementation("com.google.dagger:hilt-android:2.51.1") // Use a recent stable version
-    ksp("com.google.dagger:hilt-compiler:2.51.1") // Use the same version
+    implementation("com.google.dagger:hilt-android:2.56.2") // Use a recent stable version
+    ksp("com.google.dagger:hilt-compiler:2.56.2") // Use the same version
 
 // Third party
     implementation "com.chibatching.kotpref:kotpref:$kotpref_version"
