@@ -1,20 +1,22 @@
+plugins {
+    id("com.google.dagger.hilt.android") version "2.56.2" apply false
+}
+
 buildscript {
     ext {
-        kotlin_version = '2.1.20'
+
+        kotlin_version = "1.9.22"
         kotpref_version = '2.13.2'
     }
 
     repositories {
-        mavenCentral()
-        gradlePluginPortal()
+        google()
         google()
     }
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-        classpath 'com.android.tools.build:gradle:8.9.1'
-        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.51.1'
-        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.48.1'
+        classpath 'com.android.tools.build:gradle:8.4.0'
     }
 }
