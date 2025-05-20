@@ -70,31 +70,21 @@ fun MainScreen(
                 }
             }
 
-            when (state) {
-                is MainScreenState.Loading -> CircularProgressIndicator(
+            when {
+                state.isLoading -> CircularProgressIndicator(
                     modifier = Modifier.align(
                         Alignment.CenterHorizontally
                     )
                 )
-
-                is MainScreenState.Success -> {
-                    val content = (state as MainScreenState.Success).content
-                    Text(
-                        text = "Survival Guide Loaded: ${content.title}",
-                        modifier = Modifier.padding(8.dp)
-                    )
-                }
-
-                is MainScreenState.Error -> Text(
-                    text = "Error: ${(state as MainScreenState.Error).message}",
+                state.error != null -> Text(
+                    text = "Error: ${state.error}",
                     color = Color.Red,
                     modifier = Modifier.padding(8.dp)
                 )
-
-                is MainScreenState.SearchResults -> {
-                    val results = (state as MainScreenState.SearchResults).results
+                state.searchResults != null -> {
+                    val results = state.searchResults
                     LazyColumn(modifier = Modifier.fillMaxSize()) {
-                        items(results) { result -> // Assuming SearchResult has a 'snippet' field
+                        items(results) { result ->
                             Text(text = result.title, modifier = Modifier.padding(8.dp))
                             Text(
                                 text = highlightTextAsAnnotatedString(
@@ -103,12 +93,19 @@ fun MainScreen(
                                 ),
                                 modifier = Modifier.padding(horizontal = 8.dp, bottom = 8.dp)
                             )
-                            Text(text = result.title, modifier = Modifier.padding(8.dp))
+                            // No need for the second Text displaying result.title here
                         }
                     }
                 }
-
-                MainScreenState.Initial -> Text(
+                state.survivalContent != null -> {
+                    val content = state.survivalContent
+                    Text(
+                        text = "Survival Guide Loaded: ${content.title}",
+                        modifier = Modifier.padding(8.dp)
+                    )
+                }
+                // You might not need an "Initial" state check if isLoading is false and other properties are null
+                else -> Text(
                     text = "Initializing...",
                     modifier = Modifier.padding(8.dp)
                 )

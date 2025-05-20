@@ -52,7 +52,7 @@ class SurvivalGuideRepositoryImpl(
     }
 
     // Implement getImageData method
-    override suspend fun getImageData(imageId: String): String {
-        return imageDataSource.getImageData(imageId).toString()
+    override suspend fun getImageData(imageId: String): ByteArray {
+        return imageDataSource.getImageData(imageId)
     }
 }

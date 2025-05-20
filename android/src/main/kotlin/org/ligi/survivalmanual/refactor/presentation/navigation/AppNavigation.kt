@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
  import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
@@ -11,6 +12,7 @@ import org.ligi.survivalmanual.refactor.presentation.ui.main_screen.MainScreen
 import org.ligi.survivalmanual.refactor.presentation.ui.main_screen.MainScreenViewModel
 import org.ligi.survivalmanual.refactor.presentation.ui.preferences_screen.PreferencesScreen
 import org.ligi.survivalmanual.refactor.presentation.ui.preferences_screen.PreferencesViewModel
+import org.ligi.survivalmanual.refactor.presentation.ui.image_screen.ImageViewModel
 import org.ligi.survivalmanual.refactor.presentation.ui.image_screen.ImageScreen
 
 sealed class Screen(val route: String) {
@@ -59,8 +61,10 @@ fun AppNavHost(
             val imageId = backStackEntry.arguments?.getString("imageId")
                 ?: "" // Handle case where imageId is null
             // Ensure imageId is not empty or handle the error
+            val viewModel = hiltViewModel<ImageViewModel>()
             ImageScreen(
                 imageId = imageId,
+                viewModel = viewModel,
                 onBack = { navController.popBackStack() }
             )
         }

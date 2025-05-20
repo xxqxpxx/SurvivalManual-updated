@@ -22,7 +22,10 @@ class LocalSurvivalGuideDataSource {
                 id = "article1",
                 title = "Finding Water",
                 content = linkImagesInMarkDown("Look for dew on grass in the morning..."),
-                images = listOf(ArticleContent.Image("water_source.jpg", "A clear stream"))
+ content = listOf(
+ ArticleContent.Text(linkImagesInMarkDown("Look for dew on grass in the morning...")),
+ ArticleContent.Image("water_source.jpg", "A clear stream")
+ )
             )
 
             val dummyArticle2 = Article(
@@ -34,7 +37,10 @@ class LocalSurvivalGuideDataSource {
                         "shelter_construction.png",
                         "Building a lean-to"
                     )
-                )
+ )
+ content = listOf(
+ ArticleContent.Text(linkImagesInMarkDown("Find a natural windbreak...")),
+ ) + images // Combine text content with images
             )
 
             val dummySection1 = Section(
@@ -46,7 +52,7 @@ class LocalSurvivalGuideDataSource {
             val dummyArticle3 = Article(
                 id = "article3",
                 title = "Navigating with Stars",
-                content = linkImagesInMarkDown("Use the North Star to find direction..."),
+ content = listOf(ArticleContent.Text(linkImagesInMarkDown("Use the North Star to find direction..."))),
                 images = emptyList()
             )
 
@@ -68,18 +74,20 @@ class LocalSurvivalGuideDataSource {
         val results = mutableListOf<SearchResult>()
         val lowerCaseQuery = query.lowercase()
 
+ val survivalContent = getSurvivalContent()
+
         getSurvivalContent().sections.forEach { section ->
             try {
                 section.articles.forEach { article ->
                     if (article.title.lowercase()
-                            .contains(lowerCaseQuery) || article.content.lowercase()
-                            .contains(lowerCaseQuery)
+                            .contains(lowerCaseQuery) || article.content.any { it is ArticleContent.Text && it.text.lowercase().contains(lowerCaseQuery) }
                     ) {
+                        val snippet = article.content.firstNotNullOfOrNull { if (it is ArticleContent.Text) it.text else null } ?: ""
                         results.add(
                             SearchResult(
                                 title = article.title,
-                                snippet = article.content, // Or a relevant snippet
-                                articleId = article.id // Assuming articleId is sufficient for navigation
+                                snippet = snippet,
+                                articleId = article.id
                             )
                         )
                     }

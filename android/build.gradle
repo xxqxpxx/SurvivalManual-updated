@@ -126,6 +126,9 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     // Room dependencies
+    // Hilt Navigation Compose
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0") // Use the latest version
+
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
