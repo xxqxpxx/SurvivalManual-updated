@@ -16,8 +16,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.hilt.navigation.compose.hiltViewModel
-import coil.compose.AsyncImage
+  import coil3.compose.AsyncImage
 import org.ligi.survivalmanual.refactor.domain.ArticleContent
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -58,7 +57,7 @@ fun ImageScreen(
                 isLoading -> CircularProgressIndicator()
                 error != null -> Text(
                     "Error loading image: ${error.message}",
-                    color = MaterialTheme.colors.error
+                    color = MaterialTheme.colorScheme.error
                 )
 
                 imageUrl != null -> {

@@ -92,6 +92,10 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.material.z)
+
+
+
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation libs.androidx.vectordrawable
@@ -172,11 +176,11 @@ dependencies {
 
 
 // Testing
-    androidTestImplementation libs.androidx.junit
-    androidTestImplementation libs.androidx.espresso.contrib
-    androidTestImplementation libs.androidx.core
-    androidTestImplementation libs.androidx.rules
-    androidTestImplementation libs.test.butler.library
+    implementation libs.androidx.junit
+    implementation libs.androidx.espresso.contrib
+    implementation libs.androidx.core
+    implementation libs.androidx.rules
+    implementation libs.test.butler.library
     androidTestUtil libs.test.butler.app
 
     implementation(libs.androidx.ui.test.junit4 )
@@ -186,5 +190,10 @@ dependencies {
 
     testImplementation libs.mockk.android
     testImplementation libs.mockk.agent
+
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
+
+
 
 }

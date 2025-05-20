@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.0"
+coilCompose = "3.0.0"
 core = "1.6.1"
 espressoContrib = "3.6.1"
 hiltAndroid = "2.50"
@@ -37,6 +38,8 @@ androidx-espresso-contrib = { module = "androidx.test.espresso:espresso-contrib"
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-rules = { module = "androidx.test:rules", version.ref = "core" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
+coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coilCompose" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hiltAndroidGradlePlugin" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
@@ -48,7 +51,7 @@ robolectric-junit = { group = "org.robolectric", name = "junit", version.ref = "
 
 # Compose
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-androidx-material-z = { module = "androidx.compose.material:material-*", version.ref = "materialZ" }
+androidx-material-z = { module = "androidx.compose.material:material", version.ref = "materialZ" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }

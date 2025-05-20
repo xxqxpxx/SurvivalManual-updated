@@ -7,6 +7,7 @@ import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
+import org.ligi.survivalmanual.refactor.domain.UserPreferences
 import org.ligi.survivalmanual.refactor.domain.repository.SurvivalGuideRepository
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
@@ -25,7 +26,7 @@ class GetUserPreferencesUseCaseTest {
 
     @Test
     fun `invoke calls repository getUserPreferences and returns preferences`() = runBlocking {
-        val expectedPreferences = UserPreferences(isNightMode = true)
+        val expectedPreferences = UserPreferences(  true)
         `when`(mockRepository.getUserPreferences()).thenReturn(expectedPreferences)
 
         val result = getUserPreferencesUseCase()

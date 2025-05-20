@@ -3,6 +3,9 @@ package org.ligi.survivalmanual
 import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import org.ligi.survivalmanual.refactor.domain.use_case.GetImageUseCase
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertThrows
+import org.junit.Before
+import org.junit.Test
 import org.ligi.survivalmanual.refactor.domain.repository.SurvivalGuideRepository
 
 class GetImageUseCaseTest {

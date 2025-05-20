@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil3.compose.AsyncImage
 import org.ligi.survivalmanual.refactor.domain.SurvivalContent
 import org.ligi.survivalmanual.refactor.presentation.ui.highlightTextAsAnnotatedString
 import org.ligi.survivalmanual.refactor.presentation.ui.main_screen.MainScreenState
