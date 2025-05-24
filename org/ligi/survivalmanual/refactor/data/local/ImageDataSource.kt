@@ -1,5 +1,4 @@
 package org.ligi.survivalmanual.refactor.data.local
-
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -15,22 +14,18 @@ import java.io.FileNotFoundException
 import java.io.ByteArrayOutputStream
 
 class ImageDataSource(private val context: Context) {
-
     suspend fun getImageData(imageId: String): ByteArray? {
         val drawable: Drawable? = try {
             if (imageId.endsWith(".vd")) {
-                // Handle vector drawables
                 val drawableName = imageId.substringBeforeLast(".")
                 val resourceId = context.resources.getIdentifier(drawableName, "drawable", context.packageName)
                 if (resourceId != 0) {
                     VectorDrawableCompat.create(context.resources, resourceId, null)
                 } else {
-                    null // Or throw a specific exception if vector drawable is expected
+                    throw DomainException.ContentNotFoundException("Vector drawable resource not found for ID: $imageId")
                 }
             } else {
-                // Handle other drawable types (resource or asset)
-                val resourceId =
-                    context.resources.getIdentifier(imageId, "drawable", context.packageName)
+                val resourceId = context.resources.getIdentifier(imageId.substringBeforeLast("."), "drawable", context.packageName)
                 if (resourceId != 0) {
                     ContextCompat.getDrawable(context, resourceId)
                 } else {
@@ -40,21 +35,20 @@ class ImageDataSource(private val context: Context) {
                             imageId
                         ) as BitmapDrawable
                     } catch (e: FileNotFoundException) {
-                        Log.e("ImageDataSource", "Could not find md/$imageId in assets", e)
-                        null // Image not found in assets
+                        Log.e("ImageDataSource", "Could not find md/$imageId", e)
+                        throw DomainException.ContentNotFoundException("Image not found for ID: $imageId")
                     }
                 }
             }
         } catch (e: Exception) {
             Log.e("ImageDataSource", "Error loading image for ID: $imageId", e)
-             null // Catch any other exceptions during drawable loading
+            throw DomainException.UnknownErrorException("Error loading image: ${e.message}")
         }
+        return drawableToByteArray(drawable)
+    }
 
-        // If drawable is null at this point, throw ContentNotFoundException
-        if (drawable == null) throw DomainException.ContentNotFoundException("Image not found for ID: $imageId")
-
+    private fun drawableToByteArray(drawable: Drawable?): ByteArray? {
         if (drawable == null) return null
-
         val bitmap = if (drawable is BitmapDrawable) {
             drawable.bitmap
         } else {
@@ -65,7 +59,6 @@ class ImageDataSource(private val context: Context) {
             drawable.draw(canvas)
             bmp
         }
-
         val stream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
         val byteArray = stream.toByteArray()
