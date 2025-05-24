@@ -1,7 +1,6 @@
 package org.ligi.survivalmanual.refactor.presentation.ui.main_screen
 
 import androidx.compose.foundation.layout.Box
-import android.content.Intent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.foundation.lazy.items
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,6 +31,7 @@ import coil3.compose.AsyncImage
 import org.ligi.survivalmanual.refactor.domain.SurvivalContent
 import org.ligi.survivalmanual.refactor.presentation.ui.highlightTextAsAnnotatedString
 import org.ligi.survivalmanual.refactor.presentation.ui.main_screen.MainScreenState
+import org.ligi.survivalmanual.refactor.presentation.ui.main_screen.SearchResult
 import org.ligi.survivalmanual.refactor.presentation.ui.main_screen.MainScreenViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -84,20 +85,18 @@ fun MainScreen(
                 )
                 state.searchResults != null -> {
                     val results = state.searchResults
-                    LazyColumn(modifier = Modifier.fillMaxSize()) { // Use results.orEmpty() to handle nullable list
-                        items(results.orEmpty()) { result ->
-                            Text(text = result.title, modifier = Modifier.padding(8.dp))
+                    LazyColumn(modifier = Modifier.fillMaxSize()) {
+                        items(results) { result ->
+ Text(text = result.title, modifier = Modifier.padding(horizontal = 8.dp))
                             Text(
                                 text = highlightTextAsAnnotatedString(
                                     text = result.snippet,
                                     query = searchQuery
-                                ),
-                                modifier = Modifier.padding(horizontal = 8.dp, bottom = 8.dp)
-                            ) // Access properties using it.title and it.snippet
-                            // No need for the second Text displaying result.title here
+ ), modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp)
+                            )
                         }
                     }
-                }
+ }
                 state.survivalContent != null -> {
                     val content = state.survivalContent
                     Text(

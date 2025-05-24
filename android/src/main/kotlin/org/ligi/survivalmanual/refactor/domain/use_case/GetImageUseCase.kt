@@ -6,8 +6,9 @@ import javax.inject.Inject
 
 class GetImageUseCase @Inject constructor(private val survivalGuideRepository: SurvivalGuideRepository) {
 
-    suspend operator fun invoke(imageId: String): Result<ByteArray> = try {
-        Result.success(survivalGuideRepository.getImageData(imageId))
+    suspend operator fun invoke(imageId: String): Result<ByteArray?> = try {
+        val result = survivalGuideRepository.getImageData(imageId)
+        Result.success(result)
     } catch (e: Exception) {
         Result.failure(DomainException.UnknownErrorException("Error fetching image data: ${e.message}"))
     }

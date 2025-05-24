@@ -56,16 +56,11 @@ class LocalSurvivalGuideDataSource {
         )
 
         try {
-            // Return dummy or hardcoded data for now
-            val dummyArticle1 = Article(
-                id = "article1",
-                title = "Finding Water",
- content = listOf(
- ArticleContent.Text(linkImagesInMarkDown("Look for dew on grass in the morning...")),
- ArticleContent.Image("water_source.jpg", "A clear stream")
- )
-            )
 
+            val result = SurvivalContent(
+                sections = listOf(dummySection1, dummySection2)
+ )
+ return result
         } catch (e: Exception) {
             throw DomainException.UnknownErrorException("Error loading survival content: ${e.message}")
         }
