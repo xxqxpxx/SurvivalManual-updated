@@ -1,6 +1,5 @@
 package org.ligi.survivalmanual.refactor.data.repository
 
-import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.ligi.survivalmanual.refactor.data.local.ImageDataSource
@@ -9,6 +8,7 @@ import org.ligi.survivalmanual.refactor.data.local.PreferencesDataSource
 import org.ligi.survivalmanual.refactor.domain.SearchResult
 import org.ligi.survivalmanual.refactor.domain.SurvivalContent
 import org.ligi.survivalmanual.refactor.domain.UserPreferences
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import org.ligi.survivalmanual.refactor.domain.repository.SurvivalGuideRepository
 
 class SurvivalGuideRepositoryImpl(

@@ -3,13 +3,13 @@ package org.ligi.survivalmanual.refactor.presentation.ui.main_screen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.ligi.survivalmanual.refactor.domain.SearchResult
 import org.ligi.survivalmanual.refactor.domain.SurvivalContent
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import org.ligi.survivalmanual.refactor.domain.use_case.GetSurvivalContentUseCase
 import org.ligi.survivalmanual.refactor.domain.use_case.SearchSurvivalContentUseCase
 import javax.inject.Inject
@@ -57,7 +57,8 @@ class MainScreenViewModel @Inject constructor(
             _state.value = _state.value.copy(isLoading = true, error = null, searchResults = null)
             try {
                 val results = searchSurvivalContentUseCase(query)
-                _state.value = _state.value.copy(isLoading = false, searchResults = results.getOrNull())
+                _state.value =
+                    _state.value.copy(isLoading = false, searchResults = results.getOrNull())
             } catch (e: DomainException) {
                 _state.value = _state.value.copy(
                     isLoading = false,

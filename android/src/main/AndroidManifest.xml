@@ -12,7 +12,7 @@
         >
         <activity android:name=".ui.ImageViewActivity" />
         <activity android:name=".ui.PreferenceActivity" />
-        <activity android:name=".ui.MainActivity"
+        <activity android:name=".refactor.presentation.ui.MainActivity"
             android:exported="true"
             >
             <intent-filter>

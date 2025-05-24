@@ -3,13 +3,13 @@ package org.ligi.survivalmanual.refactor.presentation.ui.preferences_screen
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import org.ligi.survivalmanual.refactor.domain.error.DomainException
-import org.ligi.survivalmanual.refactor.domain.use_case.GetUserPreferencesUseCase
-import org.ligi.survivalmanual.refactor.domain.use_case.SaveUserPreferencesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import org.ligi.survivalmanual.refactor.domain.UserPreferences
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
+import org.ligi.survivalmanual.refactor.domain.use_case.GetUserPreferencesUseCase
+import org.ligi.survivalmanual.refactor.domain.use_case.SaveUserPreferencesUseCase
 import javax.inject.Inject
 
 @HiltViewModel

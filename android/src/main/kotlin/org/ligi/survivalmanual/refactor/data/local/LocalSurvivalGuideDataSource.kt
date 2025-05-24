@@ -1,11 +1,11 @@
 package org.ligi.survivalmanual.refactor.data.local
 
-import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import org.ligi.survivalmanual.refactor.domain.Article
 import org.ligi.survivalmanual.refactor.domain.ArticleContent
 import org.ligi.survivalmanual.refactor.domain.SearchResult
 import org.ligi.survivalmanual.refactor.domain.Section
 import org.ligi.survivalmanual.refactor.domain.SurvivalContent
+import org.ligi.survivalmanual.refactor.domain.error.DomainException
 
 fun linkImagesInMarkDown(markdown: String): String {
     return markdown.replace(Regex("!\\[([^\\]]*)\\]\\(([^)]+)\\)")) { matchResult: MatchResult ->
@@ -57,10 +57,8 @@ class LocalSurvivalGuideDataSource {
 
         try {
 
-            val result = SurvivalContent(
-                sections = listOf(dummySection1, dummySection2)
- )
- return result
+            val result = SurvivalContent("title" , sections = listOf(dummySection1, dummySection2))
+            return result
         } catch (e: Exception) {
             throw DomainException.UnknownErrorException("Error loading survival content: ${e.message}")
         }
@@ -70,15 +68,20 @@ class LocalSurvivalGuideDataSource {
         val results = mutableListOf<SearchResult>()
         val lowerCaseQuery = query.lowercase()
 
- val survivalContent = getSurvivalContent()
+        val survivalContent = getSurvivalContent()
 
         getSurvivalContent().sections.forEach { section ->
             try {
                 section.articles.forEach { article ->
                     if (article.title.lowercase()
-                            .contains(lowerCaseQuery) || article.content.any { it is ArticleContent.Text && it.text.lowercase().contains(lowerCaseQuery) }
+                            .contains(lowerCaseQuery) || article.content.any {
+                            it is ArticleContent.Text && it.text.lowercase()
+                                .contains(lowerCaseQuery)
+                        }
                     ) {
-                        val snippet = article.content.firstNotNullOfOrNull { if (it is ArticleContent.Text) it.text else null } ?: ""
+                        val snippet =
+                            article.content.firstNotNullOfOrNull { if (it is ArticleContent.Text) it.text else null }
+                                ?: ""
                         results.add(
                             SearchResult(
                                 title = article.title,

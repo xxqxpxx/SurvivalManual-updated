@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import org.ligi.survivalmanual.refactor.domain.error.DomainException
 import org.ligi.survivalmanual.refactor.domain.use_case.GetImageUseCase
 import javax.inject.Inject
 
@@ -24,7 +23,10 @@ class ImageViewModel @Inject constructor(
             _state.value = _state.value.copy(isLoading = true, error = null)
             getImageUseCase(imageId)
                 .onSuccess { imageData ->
-                    _state.value = _state.value.copy(isLoading = false, imageData = imageData)
+                    _state.value = _state.value.copy(
+                        isLoading = false,
+                        imageData = imageData
+                    )
                 }
                 .onFailure { throwable ->
                     _state.value = _state.value.copy(

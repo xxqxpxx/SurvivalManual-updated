@@ -4,17 +4,17 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import org.ligi.survivalmanual.refactor.data.local.ImageDataSource
 import org.ligi.survivalmanual.refactor.data.local.LocalSurvivalGuideDataSource
 import org.ligi.survivalmanual.refactor.data.local.PreferencesDataSource
 import org.ligi.survivalmanual.refactor.data.repository.SurvivalGuideRepositoryImpl
 import org.ligi.survivalmanual.refactor.domain.repository.SurvivalGuideRepository
+import org.ligi.survivalmanual.refactor.domain.use_case.GetSurvivalContentUseCase
 import org.ligi.survivalmanual.refactor.domain.use_case.GetUserPreferencesUseCase
 import org.ligi.survivalmanual.refactor.domain.use_case.SaveUserPreferencesUseCase
 import org.ligi.survivalmanual.refactor.domain.use_case.SearchSurvivalContentUseCase
-import dagger.hilt.android.qualifiers.ApplicationContext
-import org.ligi.survivalmanual.refactor.domain.use_case.GetSurvivalContentUseCase
 import javax.inject.Singleton
 
 @Module
@@ -37,7 +37,6 @@ object AppModule {
     @Provides
     @Singleton
     fun provideImageDataSource(@ApplicationContext context: Context): ImageDataSource {
-        // TODO: Replace with your actual ImageDataSource implementation
  return ImageDataSource(context)
     }
 
@@ -82,6 +81,6 @@ object AppModule {
     @Provides
     @Singleton
     fun provideSaveUserPreferencesUseCase(survivalGuideRepository: SurvivalGuideRepository): SaveUserPreferencesUseCase {
- return SaveUserPreferencesUseCase(survivalGuideRepository)
+        return SaveUserPreferencesUseCase(survivalGuideRepository)
     }
 }

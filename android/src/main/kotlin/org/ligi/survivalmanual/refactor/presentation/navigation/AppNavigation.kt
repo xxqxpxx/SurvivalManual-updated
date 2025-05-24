@@ -1,19 +1,19 @@
 package org.ligi.survivalmanual.refactor.presentation.navigation
 
 import androidx.compose.runtime.Composable
- import androidx.navigation.NavHostController
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import org.ligi.survivalmanual.refactor.presentation.ui.image_screen.ImageScreen
+import org.ligi.survivalmanual.refactor.presentation.ui.image_screen.ImageViewModel
 import org.ligi.survivalmanual.refactor.presentation.ui.main_screen.MainScreen
 import org.ligi.survivalmanual.refactor.presentation.ui.main_screen.MainScreenViewModel
 import org.ligi.survivalmanual.refactor.presentation.ui.preferences_screen.PreferencesScreen
 import org.ligi.survivalmanual.refactor.presentation.ui.preferences_screen.PreferencesViewModel
-import org.ligi.survivalmanual.refactor.presentation.ui.image_screen.ImageViewModel
-import org.ligi.survivalmanual.refactor.presentation.ui.image_screen.ImageScreen
 
 sealed class Screen(val route: String) {
     object MainScreen : Screen("main_screen")
@@ -36,12 +36,7 @@ fun AppNavHost(
                 viewModel = viewModel,
                 onNavigateToPreferences = { navController.navigate(Screen.PreferencesScreen.route) },
                 onNavigateToImage = { imageId ->
-                    navController.navigate(
-                        Screen.ImageScreen.route.replace(
-                            "{imageId}",
-                            imageId
-                        )
-                    )
+                    navController.navigate(Screen.ImageScreen.createRoute(imageId))
                 }
             )
         }
@@ -56,11 +51,14 @@ fun AppNavHost(
         // Add other composables for other screens here
         composable(
             route = Screen.ImageScreen.route,
-            arguments = listOf(navArgument("imageId") { type = NavType.StringType })
+            arguments = listOf(navArgument("imageId") { 
+                type = NavType.StringType
+                nullable = false
+            })
         ) { backStackEntry ->
             val imageId = backStackEntry.arguments?.getString("imageId")
-                ?: "" // Handle case where imageId is null
-            // Ensure imageId is not empty or handle the error
+            requireNotNull(imageId) { "imageId parameter wasn't found. Please make sure it's set!" }
+            
             val viewModel = hiltViewModel<ImageViewModel>()
             ImageScreen(
                 imageId = imageId,
